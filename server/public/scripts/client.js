@@ -7,12 +7,15 @@ function onReady() {
     $('#submitBtn').on('click', postTask);
     $('.tasksTable').on('click', '.markComplete', completeTask);
     $('.tasksTable').on('click', '.deleteBtn', deleteTask);
+    $('.tasksTable').on('click', '.markNotComplete', markIncomplete);
 }
 
 
 
 function renderTasks() {
     console.log('in renderTasks');
+
+    const completed = $(this).parents('tr').data('completed');
 
     $('.tasksTable').empty();
 
@@ -34,11 +37,13 @@ function renderTasks() {
                             <button class="markComplete">✅</>
                         </td>
                         <td>
+                        <button class="markNotComplete">🟩</button>    
+                        </td>
+                        <td>
                         <button class="deleteBtn">❌</button>    
                         </td>
                     </tr>
-               `);
-               colorChanger();
+               `);  
             }
         });
 } // end renderTasks
@@ -102,6 +107,32 @@ function completeTask() {
 
 
 
+function markIncomplete() {
+    console.log('in markIncomplete');
+
+    const taskId = $(this).parents('tr').data('id');
+
+    console.log(taskId);
+    
+    $.ajax({
+        method: 'PUT',
+        url: `/tasks/${taskId}`,
+        data: {
+            completed: false
+        }
+    })
+        .then(() => {
+            console.log('PUT success!');
+            renderTasks();
+        })
+        .catch((error) => {
+            console.log('PUT /tasks error', error);
+            alert('Something went wrong! 🤬')
+        })
+}
+
+
+
 function deleteTask() {
     console.log('in deleteTask');
     
@@ -125,11 +156,9 @@ function deleteTask() {
 
 
 function colorChanger() {
-    const taskCompleted = $(this).parents('tr').data('completed');
-
-    if(taskCompleted===true) {
-        $(this).parents('tr').css('color', 'green');
-    };
+    console.log('in colorChanger');
+    
+    $(this).parents('tr').css('background-color', 'green');
 }
 
 
