@@ -5,10 +5,13 @@ $(document).ready(onReady);
 function onReady() {
     renderTasks();
     $('#submitBtn').on('click', postTask);
+    $('.tasksTable').on('click', '.markComplete', completeTask);
 }
 
 
 function renderTasks() {
+    console.log('in renderTasks');
+    
     $('.tasksTable').empty();
 
     $.ajax({
@@ -39,6 +42,9 @@ function renderTasks() {
 
 
 function postTask() {
+    console.log('in postTask');
+    
+    // declare an object to store input data
     let taskObject = {
         task: $('#task').val(),
         addedBy: $('#addedBy').val(),
@@ -51,6 +57,7 @@ function postTask() {
         url: '/tasks',
         data: taskObject
     })
+        //clear fields
         .then((response) => {
             $('#task').val(''),
             $('#addedBy').val(''),
@@ -58,14 +65,36 @@ function postTask() {
             $('#deadline').val(''),
             renderTasks();
         })
-}
-
-
-function deleteTask() {
-
-}
+} //end postTask
 
 
 function completeTask() {
+    console.log('in completeTask');
+
+    const taskId = $(this).parents('tr').data('id');
+
+    console.log(taskId);
+    
+    $.ajax({
+        method: 'PUT',
+        url: `/tasks/${taskId}`,
+        data: {
+            completed: true
+        }
+    })
+        .then(() => {
+            console.log('PUT success!');
+            renderTasks();
+        })
+        .catch((error) => {
+            console.log('PUT /tasks error', error);
+            alert('Something went wrong! 🤬')
+        })
+    
+}
+
+
+
+function deleteTask() {
 
 }

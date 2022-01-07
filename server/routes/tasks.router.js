@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 
     let queryText = `
         INSERT INTO "tasks"
-            ("task", "addedBy", "dateAdded", "deadline", "completedBy")
+            ("task", "addedBy", "dateAdded", "deadline")
         VALUES
             ($1, $2, $3, $4, $5)       
     `;
@@ -37,7 +37,6 @@ router.post('/', (req, res) => {
         req.body.addedBy,
         req.body.dateAdded,
         req.body.deadline,
-        req.body.completedBy
     ];
     console.log('queryText is: ', queryText);
     
@@ -55,14 +54,17 @@ router.post('/', (req, res) => {
 // PUT route
 router.put('/:id', (req, res) => {
     console.log('id is: ', req.params.id);
+    console.log('Completed?', req.body.completed);
+    
 
     const queryText = `
         UPDATE "tasks"
-        SET "completed" = true
-        WHERE "id = $1;
+        SET "completed" = $1
+        WHERE "id" = $2
     `;
 
     const queryParams = [
+        req.body.completed,
         req.params.id
     ];
     pool.query(queryText, queryParams)
