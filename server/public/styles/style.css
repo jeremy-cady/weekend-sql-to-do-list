@@ -3,16 +3,30 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     background-color: black;
+    text-align: center;
 }
 
-#tasksTable, tasksTable td{
+.tasksTable {
     border: 1px solid black;
     border-collapse: collapse;
-    padding: 10px
+    padding: 10px;
 }
 
 th, tr, td {
     border: 1px solid white;
     margin: 30px;
     padding: 10px;
+}
+
+.table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputSection {
+    margin-top: 60px;
+}
+
+.tableSection {
+    margin-top: 60px;
 }

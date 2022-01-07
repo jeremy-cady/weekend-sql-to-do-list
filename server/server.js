@@ -3,6 +3,8 @@ console.log('in server.js');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 5000;
+const tasksRouter = require('./routes/tasks.router');
 
 // setup body-parser
 app.use (bodyParser.urlencoded({ extended:true }));
@@ -12,11 +14,9 @@ app.use (bodyParser.json());
 app.use(express.static('server/public'));
 
 // tasks router setup
-let tasksRouter = require('./routes/tasks.router');
-app.use('/songs', tasksRouter);
+app.use('/tasks', tasksRouter);
 
 // listening on PORT
-const PORT = 5000;
 app.listen(PORT, () => {
     console.log('up and running on PORT', PORT);
 });

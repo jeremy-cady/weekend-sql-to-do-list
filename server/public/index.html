@@ -6,35 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/style.css">
     <title>Tasks List</title>
 </head>
 <body>
     <header>
-        <h1>Tasks List</h1>
+        <h1>
+            <u>Tasks List</u>
+        </h1>
 
     </header>
-    <section>
+    <section class="inputSection">
         <h2>Add Task</h2>
-        <input type="text" id="task" placeholder="Task">
-        <input type="text" id="addedBy" placeholder="Added By">
-        <input type="text" id="dateAdded" placeholder="Date Added">
-        <input type="text" id="deadline" placeholder="Deadline">
+        <input type="text" class="inputs" id="task" placeholder="Task">
+        <input type="text" class="inputs" id="addedBy" placeholder="Added By">
+        <input type="text" class="inputs" id="dateAdded" placeholder="Date Added">
+        <input type="text" class="inputs" id="deadline" placeholder="Deadline">
+        <input type="text" class="inputs" id="completedBy" placeholder="Completed By">
         <button type="button" id="submitBtn">Submit</button>
      </section>
-    <section>
-        <h2>All Tasks</h2>
-        <table id="tasksTable">
+    <section class="tableSection">
+        <h2>Tasks</h2>
+        <table class="table">
             <thead>
                 <tr>
                     <th>Task</th>
                     <th>Added By</th>
-                    <th>Completed</th>
                     <th>Date Added</th>
                     <th>Deadline</th>
+                    <th>Completed By</th>
+                    <th>Mark Task Complete</th>
+                    <th>Delete Task</th>
                 </tr>
             </thead>
-            <tbody id="viewTasks">
+            <tbody class="tasksTable">
+                <!-- tasks go here -->
             </tbody>
         </table>
     </section>
