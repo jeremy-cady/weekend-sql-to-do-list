@@ -34,7 +34,7 @@
         [ ] pool.js
     [ ] Server
         [ ] server.js
-    [ ] npm install
-    [ ] npm install body-parser
-    [ ] npm install nodemon
+    [x] npm install
+    [x] npm install body-parser
+    [x] npm install nodemon
             
