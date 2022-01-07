@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
         INSERT INTO "tasks"
             ("task", "addedBy", "dateAdded", "deadline")
         VALUES
-            ($1, $2, $3, $4, $5)       
+            ($1, $2, $3, $4)       
     `;
 
     let queryParams = [
@@ -84,7 +84,7 @@ router.delete('/:id', (req, res) => {
 
     let queryText = `
         DELETE FROM "tasks"
-        WHERE id=$1:
+        WHERE id=$1;
     `;
 
     let queryParams = [

@@ -6,7 +6,9 @@ function onReady() {
     renderTasks();
     $('#submitBtn').on('click', postTask);
     $('.tasksTable').on('click', '.markComplete', completeTask);
+    $('.tasksTable').on('click', '.deleteBtn', deleteTask);
 }
+
 
 
 function renderTasks() {
@@ -42,6 +44,7 @@ function renderTasks() {
 } // end renderTasks
 
 
+
 function postTask(evt) {
     console.log('in postTask');
     
@@ -71,6 +74,7 @@ function postTask(evt) {
 } //end postTask
 
 
+
 function completeTask() {
     console.log('in completeTask');
 
@@ -88,10 +92,6 @@ function completeTask() {
         .then(() => {
             console.log('PUT success!');
             renderTasks();
-            // if(completed===true) {
-            //     $(this).parents('tr').css('highlight');
-            // }
-            //colorChanger();
         })
         .catch((error) => {
             console.log('PUT /tasks error', error);
@@ -103,8 +103,25 @@ function completeTask() {
 
 
 function deleteTask() {
+    console.log('in deleteTask');
+    
+    const taskId = $(this).parents('tr').data('id');
 
+    console.log(taskId);
+
+    $.ajax({
+        method: 'DELETE', 
+        url: `/tasks/${taskId}`
+    })
+        .then((response) => {
+            console.log('DELETE success!');
+            renderTasks();
+        })
+        .catch((error) => {
+            console.log('DELETE /tasks failed!', error);
+        });
 }
+
 
 
 function colorChanger() {
