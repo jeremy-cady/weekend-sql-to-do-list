@@ -24,8 +24,7 @@ function renderTasks() {
                         <td>${response[i].task}</td>
                         <td>${response[i].addedBy}</td>
                         <td>${response[i].dateAdded}</td>
-                        <td>${response[i].deadline}</td> 
-                        <td>${response[i].completedBy}</td>                      
+                        <td>${response[i].deadline}</td>                      
                         <td>
                             <button class="markComplete">✅</>
                         </td>
@@ -45,7 +44,6 @@ function postTask() {
         addedBy: $('#addedBy').val(),
         dateAdded: $('#dateAdded').val(),
         deadline: $('#deadline').val(),
-        completedBy: $('#completedBy').val()
     }
 
     $.ajax({
@@ -58,7 +56,6 @@ function postTask() {
             $('#addedBy').val(''),
             $('#dateAdded').val(''),
             $('#deadline').val(''),
-            $('#completedBy').val('')
             renderTasks();
         })
 }
