@@ -16,5 +16,5 @@ VALUES
 	('Clean and charge traps', 'Ray Stanz', false, '01-06-2022', '01-09-2022', 'Winston Zedemore'),
 	('Ecto-mobile repairs', 'Ray Stanz',  false, '01-06-2022', '01-09-2022', 'Ray Stanz'),
 	('Meeting with Dana Barret', 'Peter Venkman', false, '01-06-2022', '01-09-2022', 'Peter Venkman'),
-	('Proton pack service', 'Egon Spengler', false, '01-06-2022', '01-09-2022', 'Egon Spengler');
+	('Proton pack service', 'Egon Spengler', false, '01-06-2022', '01-09-2022', 'Egon Spengler'),
     ('Bust Slimer', 'Jeanine Melnitz', false, '01-06-2022', '01-09-2022', 'Ghostbusters');

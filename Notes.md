@@ -6,6 +6,7 @@
             [ ] DELETE function
             [ ] POST function to add new tasks
             [ ] PUT function to change tasks to complete
+                [ ] should have a visual cue that task is completed
         [ ] create a task
             [ ] inputs
                 [ ] task
@@ -21,9 +22,9 @@
                 [ ] completed (button)
                 [ ] delete (button)
             
-    [ ] Database
-        [ ] weekend-to-do-app
-        [ ] put all CREATE TABLE queries in a `database.sql` file
+    [x] Database
+        [x] weekend-to-do-app
+        [x] put all CREATE TABLE queries in a `database.sql` file
     [ ] Routes
         [ ] tasks.router.js
             [ ] GET
