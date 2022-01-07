@@ -11,7 +11,7 @@ function onReady() {
 
 function renderTasks() {
     console.log('in renderTasks');
-    
+
     $('.tasksTable').empty();
 
     $.ajax({
@@ -23,7 +23,7 @@ function renderTasks() {
             // append the data to the DOM
             for (let i=0; i<response.length; i++) {
                 $('.tasksTable').append(`
-                    <tr data-id="${response[i].id}">
+                    <tr data-id="${response[i].id}" data-completed="${response[i].completed}">
                         <td>${response[i].task}</td>
                         <td>${response[i].addedBy}</td>
                         <td>${response[i].dateAdded}</td>
@@ -35,15 +35,18 @@ function renderTasks() {
                         <button class="deleteBtn">❌</button>    
                         </td>
                     </tr>
-                `);
+               `);
+               colorChanger();
             }
         });
 } // end renderTasks
 
 
-function postTask() {
+function postTask(evt) {
     console.log('in postTask');
     
+    evt.preventDefault();
+
     // declare an object to store input data
     let taskObject = {
         task: $('#task').val(),
@@ -85,6 +88,10 @@ function completeTask() {
         .then(() => {
             console.log('PUT success!');
             renderTasks();
+            // if(completed===true) {
+            //     $(this).parents('tr').css('highlight');
+            // }
+            //colorChanger();
         })
         .catch((error) => {
             console.log('PUT /tasks error', error);
@@ -98,3 +105,15 @@ function completeTask() {
 function deleteTask() {
 
 }
+
+
+function colorChanger() {
+    const taskCompleted = $(this).parents('tr').data('completed');
+
+    if(taskCompleted===true) {
+        $(this).parents('tr').css('color', 'green');
+    };
+}
+
+
+

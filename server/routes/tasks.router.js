@@ -7,7 +7,7 @@ const pool = require('../modules/pool');
 // GET route
 router.get('/', (req, res) => {
     let queryText = `
-        SELECT * FROM "tasks"
+        SELECT * FROM "tasks" ORDER BY "id" ASC
     `;
     pool.query(queryText)
         .then((dbRes) => {
@@ -80,8 +80,24 @@ router.put('/:id', (req, res) => {
 
 // DELETE route
 router.delete('/:id', (req, res) => {
+    console.log('id is: ', req.params.id);
 
-})
+    let queryText = `
+        DELETE FROM "tasks"
+        WHERE id=$1:
+    `;
+
+    let queryParams = [
+        req.params.id
+    ];
+    pool.query(queryText, queryParams)
+        .then((dbRes) => {
+            res.sendStatus(204);    //204 = No Content
+        })
+        .catch((error) => {
+            console.log('DELETE /tasks failed', error);
+        });
+});
 
 
 
