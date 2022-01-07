@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vendors/jquery.js" charset="utf-8"></script>
+    <script src="scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Tasks List</title>
+</head>
+<body>
+    <header>
+        <h1>Tasks List</h1>
+
+    </header>
+    <section>
+        <h2>Add Task</h2>
+        <input type="text" id="task" placeholder="Task">
+        <input type="text" id="addedBy" placeholder="Added By">
+        <input type="text" id="dateAdded" placeholder="Date Added">
+        <input type="text" id="deadline" placeholder="Deadline">
+        <button type="button" id="submitBtn">Submit</button>
+     </section>
+    <section>
+        <h2>All Tasks</h2>
+        <table id="tasksTable">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Added By</th>
+                    <th>Completed</th>
+                    <th>Date Added</th>
+                    <th>Deadline</th>
+                </tr>
+            </thead>
+            <tbody id="viewTasks">
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
