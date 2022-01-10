@@ -4,6 +4,7 @@ const router = express.Router();
 const pg = require('pg');
 const pool = require('../modules/pool');
 
+
 // GET route
 router.get('/', (req, res) => {
     let queryText = `
@@ -27,18 +28,21 @@ router.post('/', (req, res) => {
 
     let queryText = `
         INSERT INTO "tasks"
-            ("task", "addedBy", "dateAdded", "deadline")
+            ("task", "addedBy", "assignedTo", "dateAdded", "deadline")
         VALUES
-            ($1, $2, $3, $4)       
+            ($1, $2, $3, $4, $5)       
     `;
 
     let queryParams = [
         req.body.task,
         req.body.addedBy,
+        req.body.assignedTo,
         req.body.dateAdded,
         req.body.deadline,
     ];
     console.log('queryText is: ', queryText);
+    console.log('queryParams are: ', queryParams);
+    
     
     pool.query(queryText, queryParams)
         .then((dbRes) => {

@@ -2,7 +2,7 @@ body{
     margin: 50px;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    background-color: black;
+    background-color: #09013c;
     text-align: center;
 }
 
@@ -29,4 +29,9 @@ th, tr, td {
 
 .tableSection {
     margin-top: 60px;
+}
+
+.inputs {
+    margin-left: 12px;
+    margin-right: 12px
 }

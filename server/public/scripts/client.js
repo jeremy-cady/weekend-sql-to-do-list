@@ -15,8 +15,6 @@ function onReady() {
 function renderTasks() {
     console.log('in renderTasks');
 
-    const completed = $(this).parents('tr').data('completed');
-
     $('.tasksTable').empty();
 
     $.ajax({
@@ -28,11 +26,13 @@ function renderTasks() {
             // append the data to the DOM
             for (let i=0; i<response.length; i++) {
                 $('.tasksTable').append(`
-                    <tr data-id="${response[i].id}" data-completed="${response[i].completed}">
+                    <tr data-id="${response[i].id}">
                         <td>${response[i].task}</td>
                         <td>${response[i].addedBy}</td>
-                        <td>${response[i].dateAdded}</td>
-                        <td>${response[i].deadline}</td>                      
+                        <td>${response[i].assignedTo}</td>
+                        <td>${moment(response[i].dateAdded).format('MM-DD-YYYY')}</td>
+                        <td>${moment(response[i].deadline).format('MM-DD-YYYY')}</td>   
+                        <td>${response[i].completed}</td>                   
                         <td>
                             <button class="markComplete">✅</>
                         </td>
@@ -43,7 +43,7 @@ function renderTasks() {
                         <button class="deleteBtn">❌</button>    
                         </td>
                     </tr>
-               `);  
+               `);                
             }
         });
 } // end renderTasks
@@ -59,6 +59,7 @@ function postTask(evt) {
     let taskObject = {
         task: $('#task').val(),
         addedBy: $('#addedBy').val(),
+        assignedTo: $('#assignedTo').val(),
         dateAdded: $('#dateAdded').val(),
         deadline: $('#deadline').val(),
     }
@@ -72,6 +73,7 @@ function postTask(evt) {
         .then((response) => {
             $('#task').val(''),
             $('#addedBy').val(''),
+            $('#assignedTo').val('')
             $('#dateAdded').val(''),
             $('#deadline').val(''),
             renderTasks();
@@ -96,7 +98,7 @@ function completeTask() {
     })
         .then(() => {
             console.log('PUT success!');
-            renderTasks();
+            renderTasks();  
         })
         .catch((error) => {
             console.log('PUT /tasks error', error);
@@ -155,10 +157,8 @@ function deleteTask() {
 
 
 
-function colorChanger() {
-    console.log('in colorChanger');
-    
-    $(this).parents('tr').css('background-color', 'green');
+function turnGreen() {
+    console.log('in turnGreen');
 }
 
 

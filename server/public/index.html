@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
+    <script src="scripts/moment.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <title>Tasks List</title>
 </head>
@@ -20,6 +21,7 @@
         <h2>Add Task</h2>
         <input type="text" class="inputs" id="task" placeholder="Task">
         <input type="text" class="inputs" id="addedBy" placeholder="Added By">
+        <input type="text" class="inputs" id="assignedTo" placeholder="Assigned To">
         <input type="text" class="inputs" id="dateAdded" placeholder="Date Added">
         <input type="text" class="inputs" id="deadline" placeholder="Deadline">
         <button type="button" id="submitBtn">Submit</button>
@@ -31,8 +33,10 @@
                 <tr>
                     <th>Task</th>
                     <th>Added By</th>
+                    <th>Assigned To</th>
                     <th>Date Added</th>
                     <th>Deadline</th>
+                    <th>Completed?</th>
                     <th>Mark Task Complete</th>
                     <th>Mark Not Complete</th>
                     <th>Delete Task</th>
