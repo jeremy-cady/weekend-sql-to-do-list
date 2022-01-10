@@ -4,6 +4,7 @@
   "description": "[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md",
   "main": "index.js",
   "dependencies": {
+    "bootstrap-table": "^1.19.1",
     "express": "^4.17.2",
     "module": "^1.2.5",
     "moment": "^2.29.1",
